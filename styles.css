@@ -1,0 +1,176 @@
+@keyframes panning {
+    0% {
+      background-position: 0% 0%;
+    }
+    25% {
+      background-position: 100% 100%;
+    }
+     50% {
+      background-position: 100% 0%;
+    }
+    75% {
+      background-position: 0 100%;
+    }
+    200% {
+      background-position: 0 0;
+    }
+  }
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem; /* Add gap between main-info and links */
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+    background-size: cover;
+    background-position: center;
+    animation: panning 30s infinite linear;
+}
+
+.main-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#clock {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 10em;
+    color: #eceff4;
+    text-align: center;
+    line-height: 100%;
+    font-family: 'Abril Fatface', cursive;
+    text-shadow: 2px 2px 0px rgba(0,0,0,0.75);
+}
+#date {
+    font-size: 1.5em;
+    letter-spacing: 0.05em;
+    color: #eceff4;
+    text-align: center;
+    font-family: 'Abril Fatface', cursive;
+    text-shadow: 2px 2px 0px rgba(0,0,0,0.75);
+}
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Chivo Mono', monospace;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.5s;
+    pointer-events: none;
+    display: flex;
+    flex-direction: column;
+    will-change: opacity; /* Optimize transition to prevent flashing */
+}
+#overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+#overlay.active ~ * {
+    filter: blur(5px);
+    transform: scale(1.1); /* Scale up to prevent white edges */
+    transition: transform 0.5s, filter 0.5s; /* Smooth transition for scaling and blur */
+}
+
+#overlay.active ~ #clock,
+#overlay.active ~ #date {
+    opacity: 0; /* Make the elements invisible */
+    pointer-events: none; /* Prevent interaction with the elements */
+    transition: opacity 0.5s; /* Smooth transition for hiding */
+}
+
+#overlay form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#overlay textarea {
+    font-size: 3rem;
+    font-family: 'Chivo Mono', monospace;
+    background: transparent;
+    border: none;
+    color: #fff;
+    text-align: center;
+    outline: none;
+    caret-color: #f224ff;
+    height: auto; /* Allow the textarea to expand vertically */
+    width: 80vw; /* Limit the width to 80% of the viewport width */
+    line-height: 1.2; /* Adjust line spacing for better readability */
+    resize: none; /* Prevent manual resizing */
+    overflow: hidden; /* Hide scrollbars */
+}
+
+.links ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: row; /* Horizontal layout */
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    text-align: center;
+    gap: 1rem; /* Space between icons */
+    z-index: 1001; /* Ensure links are above other content */
+}
+
+.links li {
+    display: flex;
+    align-items: center;
+}
+
+.links a {
+    text-decoration: none;
+    font-size: 2.5em; /* Icon size */
+    color: #fff;
+    transition: opacity 0.3s, transform 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.links a:hover {
+    transform: scale(1.2);
+    transition: ease 0.3s;
+}
+
+.links a i {
+    pointer-events: none;
+}
+
+.icon-img {
+    width: 1em;
+    height: 1em;
+    transition: transform 0.3s, filter 0.3s;
+    cursor: pointer;
+    /* Add same shadow as clock and date */
+    filter: drop-shadow(1px 1px rgba(0,0,0,0.75));
+}
+
+.links a:hover .icon-img {
+    transform: scale(1.2);
+    filter: none;
+}
+
+.bg-video {
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-size: cover;
+    background: no-repeat center;
+    user-select: none;
+    pointer-events: none;
+}

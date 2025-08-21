@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NewTab</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Chivo+Mono:wght@400;700&family=Abril+Fatface&display=swap" rel="stylesheet">
+    <link rel="icon" href="favicon.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="main-info">
+        <div id="clock"></div>
+        <div id="date"></div>
+    </div>
+    <div id="links" class="links">
+        <ul>
+            <li>
+                <a href="https://www.reddit.com" target="_self">
+                    <img src="icons/redditwhite.svg" data-hover="icons/reddit.svg" alt="reddit" class="icon-img" />
+                </a>
+            </li>
+            <li>
+                <a href="https://www.reuters.com" target="_self">
+                    <img src="icons/reuterswhite.svg" data-hover="icons/reuters.svg" alt="reuters" class="icon-img" />
+                </a>
+            </li>
+            <li>
+                <a href="https://www.youtube.com" target="_self">
+                    <img src="icons/youtubewhite.svg" data-hover="icons/youtube.svg" alt="youtube" class="icon-img" />
+                </a>
+            </li>
+            <li>
+                <a href="http://www.pocketcasts.com" target="_self">
+                    <img src="icons/pocketcastswhite.svg" data-hover="icons/pocketcasts.svg" alt="pocketcasts" class="icon-img" />
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div id="overlay" class="overlay">
+        <form id="searchForm" action="https://www.google.com/search" method="get">
+            <textarea name="q" id="searchInput" autocomplete="off" autofocus></textarea>
+        </form>
+    </div>
+    <script src="scripts.js"></script>
+</body>
+</html>
