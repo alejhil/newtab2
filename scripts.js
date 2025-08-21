@@ -26,7 +26,7 @@ updateClock();
 
 // Background functionality
 function getRandomBackground() {
-    const videoBackgroundsDir = 'videobackgrounds/small/';
+    const videoBackgroundsDir = 'small/';
     const videos = [];
     fetch(videoBackgroundsDir)
         .then(response => response.text())
